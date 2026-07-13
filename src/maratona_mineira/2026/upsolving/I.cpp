@@ -1,3 +1,4 @@
+// Link => https://codeforces.com/group/YgJmumGtHD/contest/106552/problem/I
 #include <bits/stdc++.h>
 #define endl "\n"
 #define INF 0x3f3f3f3f

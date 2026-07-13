@@ -1,3 +1,4 @@
+// Link => https://codeforces.com/group/YgJmumGtHD/contest/106552/problem/B
 #include <bits/stdc++.h>
 #define ll long long
 
@@ -13,12 +14,12 @@ ll dp[4*MAXN];
 ll N, T;
 
 /*
-    Seja dp[i] = Quantidade minima de pulos que precisei dar para chegar atÃ©a posiÃÃo i 
-    A solucao consiste em, sabendo onde estou e quantos pulos tenho carregados, sei qual range posso alcanÃar.
-    EntÃo, posso atualizar o range [i+1, i+pulos] com dp[i] + 1, essa atualizaÃÃo serÃ¡ feita utilizando uma
+    Seja dp[i] = Quantidade minima de pulos que precisei dar para chegar atÃ©a posiï¿½ï¿½o i 
+    A solucao consiste em, sabendo onde estou e quantos pulos tenho carregados, sei qual range posso alcanï¿½ar.
+    Entï¿½o, posso atualizar o range [i+1, i+pulos] com dp[i] + 1, essa atualizaï¿½ï¿½o serÃ¡ feita utilizando uma
     Segment Tree com Lazy Propagation modificada.
-    No entanto os valores no range jÃ¡ podem ser menores que dp[i] + 1, entÃo quem vai garantir que os valores persistidos serÃo
-    sempre os mÃnimos Ã© a prÃpria Seg Tree modificada.
+    No entanto os valores no range jÃ¡ podem ser menores que dp[i] + 1, entï¿½o quem vai garantir que os valores persistidos serï¿½o
+    sempre os mï¿½nimos Ã© a prï¿½pria Seg Tree modificada.
 */
 void propagate(int node, int l, int r) {
     if (dp[node] == INF) return;
@@ -92,13 +93,13 @@ void solve() {
         //cout << "Atual " << arr[i] << "=> " << pulos << "\n";
         ll atual = query(1, 1, N, i);
 
-        // Se atual for INF, entÃo nÃo posso chegar aqui, nem continuo
+        // Se atual for INF, entï¿½o nï¿½o posso chegar aqui, nem continuo
         if (atual == INF) continue;
 
         if (i < N && arr[i+1] == 'x') {
             update(1, 1, N, i+1, i+1, atual); 
         }
-        // atualizar o range, somente se eu estiver nÃo puder mais continuar caminhando, e precisar pular
+        // atualizar o range, somente se eu estiver nï¿½o puder mais continuar caminhando, e precisar pular
         if ( i < N && arr[i+1] == '.') {
             update(1, 1, N, min(i+1, N), min(i+pulos, N), atual+1);
         }
